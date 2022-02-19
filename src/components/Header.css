@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    display: flex;
+    background-color: #a5785a;
+    padding: 1rem;
+}
+
+.navbar h1 {
+    color: #ebecee;
+    margin-right: 2rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar ul {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    list-style-type: none;
+}
+
+.navbar ul li a {
+    padding: 0.25rem 1rem;
+    color: #ebecee;
+    font-weight: bold;
+}
+
+.navbar ul li:last-child {
+    background-color: #ebecee;
+    margin-left: auto;
+    border-radius: 8px;
+    padding: 0.25rem;
+}
+
+.navbar ul li .contacto {
+    color: #4a3933;
+}
