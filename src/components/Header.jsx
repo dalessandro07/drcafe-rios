@@ -1,26 +1,14 @@
 import React from "react";
-import "./Header.css";
+import CartWidget from "./CartWidget";
+import Nav from "./Nav";
+import logo from "../assets/images/logo-white.png";
 
 const Header = () => {
     return (
-        <header className="navbar">
-            <h1>DRCAFE</h1>
-            <ul>
-                <li>
-                    <a href="../../public/index.html">Ofertas</a>
-                </li>
-                <li>
-                    <a href="../../public/index.html">Productos</a>
-                </li>
-                <li>
-                    <a href="../../public/index.html">Nosotros</a>
-                </li>
-                <li>
-                    <a className="contacto" href="../../public/index.html">
-                        Contacto
-                    </a>
-                </li>
-            </ul>
+        <header id="layout-header">
+            <img className="header__logo" src={logo} alt="logo" />
+            <Nav />
+            <CartWidget />
         </header>
     );
 };
