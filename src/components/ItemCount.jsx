@@ -24,6 +24,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
                 <button onClick={restar}>-</button>
             </div>
             <button
+                className="[background-color:#ebecee] [color:#4a3933] rounded-lg font-bold p-1 py-2"
                 onClick={() => {
                     onAdd(estado);
                 }}>

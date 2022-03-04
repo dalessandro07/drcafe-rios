@@ -1,16 +1,20 @@
-import React from "react";
-import Header from "./components/Header";
-import Main from "./components/Main";
-import "./Index.css";
-import logo from "./assets/images/logo-white.png";
+import React from 'react';
+
+import Header from './components/Header';
+import Hero from './components/Hero';
+
+import ItemListContainer from './components/ItemListContainer';
+
+import './Index.css';
 
 const App = () => {
     return (
         <>
-            <Header logo={logo} />
-            <Main nombre="Alessandro" compras={7}>
-                <h2>Hola Mundo</h2>
-            </Main>
+            <div className="flex flex-col index-page h-screen">
+                <Header />
+                <Hero nombre="Alessandro" compras={7} />
+            </div>
+            <ItemListContainer />
         </>
     );
 };

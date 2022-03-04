@@ -1,13 +1,11 @@
-import React from "react";
-import CartWidget from "./CartWidget";
-import Nav from "./Nav";
+import React from 'react';
+import Nav from './Nav';
 
-const Header = ({ logo }) => {
+const Header = () => {
     return (
-        <header id="layout-header">
-            <img className="header__logo" src={logo} alt="logo" />
+        <header className="flex items-center justify-between">
+            <img className="w-28" src="/assets/images/logo-white.png" alt="logo" />
             <Nav />
-            <CartWidget />
         </header>
     );
 };
