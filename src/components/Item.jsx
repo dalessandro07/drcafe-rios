@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Item = ({ producto }) => {
     let stairs = [];
 
@@ -11,14 +13,15 @@ const Item = ({ producto }) => {
 
     return (
         <div className="max-w-sm bg-white m-4 grow rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-            <a className="flex justify-center" href="/">
-                <img className="rounded-t-lg" src={producto.img} alt="producto" />
-            </a>
+            <Link className={`flex justify-center ${producto.color}`} to={`/productos/${producto.categoria}/${producto.id}`}>
+                <img className="rounded-t-lg max-h-[250px] object-cover" src={producto.img} alt="producto" />
+            </Link>
             <div className="px-5 py-5 pb-5">
                 <div className="flex justify-between">
-                    <a href="/">
+                    <Link to={`/productos/${producto.categoria}/${producto.id}`}>
                         <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{producto.nombre}</h5>
-                    </a>
+                    </Link>
+
                     <div className="flex items-center mt-2.5 mb-5">
                         {stairs}
                         <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">{producto.estrellas}.0</span>
@@ -26,7 +29,10 @@ const Item = ({ producto }) => {
                 </div>
                 <div className="flex flex-col justify-between">
                     <span className="text-lg font-bold text-gray-300 line-through dark:text-white">S/ {producto.precio + 10}</span>
-                    <span className="text-3xl font-bold text-gray-900 dark:text-white">S/ {producto.precio}</span>
+                    <div className="flex justify-between items-center">
+                        <span className="text-3xl font-bold text-gray-900 dark:text-white">S/ {producto.precio}</span>
+                        <span className="text-sm font-bold text-gray-900 dark:text-white">Disponibles: {producto.stock}</span>
+                    </div>
                     <button className="[background-color:#4a3933] [color:#ebecee] my-4 rounded-lg hover:opacity-90 font-bold px-4 py-2">Agregar al carrito</button>
                 </div>
             </div>

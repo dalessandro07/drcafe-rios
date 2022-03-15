@@ -1,21 +1,31 @@
+import { Link } from 'react-router-dom';
+
 const Footer = () => {
     return (
-        <div className="relative mt-16 bg-deep-purple-accent-400 border [border-top:0.05px solid #4a393329]">
+        <div className="relative bg-deep-purple-accent-400 border [border-top:0.05px solid #4a393329]">
             <div className="px-4 pt-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
-                <div className="grid gap-16 row-gap-10 mb-8 lg:grid-cols-6">
-                    <div className="md:max-w-md lg:col-span-2">
+                <div className="flex flex-col justify-start mb-8 md:flex-row">
+                    <div className="">
                         <a href="/" aria-label="Go home" title="DRCAFE" className="inline-flex items-center">
                             <img className="w-1/5" src="/assets/images/logo-1-bg.png" alt="" />
                             <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">DRCAFE</span>
                         </a>
                         <div className="mt-4 lg:max-w-sm">
-                            <p className="text-sm text-deep-purple-50">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-                            <p className="mt-4 text-sm text-deep-purple-50">Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                            <p className="text-sm text-deep-purple-50">
+                                Estamos ubicados en Lima, Perú. Somos una tienda virtual que inició sus actividades a principios del 2022. <br />
+                                Importamos los <b>cafés y chocolates más selectos</b> de muchos lugares del mundo para llevartelos a tu hogar. <br />
+                                <br />
+                                <b>
+                                    Nuestro lema es <em>“Café, luego existo.”</em>
+                                </b>
+                            </p>
                         </div>
                     </div>
-                    <div className="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4">
+                    <div className="flex justify-around w-full mt-12 md:mt-4">
                         <div>
-                            <p className="font-semibold tracking-wide text-teal-accent-400">Cafés</p>
+                            <Link to="/productos/cafes">
+                                <p className="font-semibold tracking-wide text-teal-accent-400">Cafés</p>
+                            </Link>
                             <ul className="mt-2 space-y-2">
                                 <li>
                                     <a href="/" className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
@@ -40,7 +50,9 @@ const Footer = () => {
                             </ul>
                         </div>
                         <div>
-                            <p className="font-semibold tracking-wide text-teal-accent-400">Chocolates</p>
+                            <Link to="/productos/chocolates">
+                                <p className="font-semibold tracking-wide text-teal-accent-400">Chocolates</p>
+                            </Link>
                             <ul className="mt-2 space-y-2">
                                 <li>
                                     <a href="/" className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
@@ -65,61 +77,6 @@ const Footer = () => {
                                 <li>
                                     <a href="/" className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
                                         Nuevos
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <p className="font-semibold tracking-wide text-teal-accent-400">Apples</p>
-                            <ul className="mt-2 space-y-2">
-                                <li>
-                                    <a href="/" className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
-                                        Media
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/" className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
-                                        Brochure
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/" className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
-                                        Nonprofit
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/" className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
-                                        Educational
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/" className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
-                                        Projects
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <p className="font-semibold tracking-wide text-teal-accent-400">Business</p>
-                            <ul className="mt-2 space-y-2">
-                                <li>
-                                    <a href="/" className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
-                                        Infopreneur
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/" className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
-                                        Personal
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/" className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
-                                        Wiki
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/" className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
-                                        Forum
                                     </a>
                                 </li>
                             </ul>

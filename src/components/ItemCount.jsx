@@ -1,10 +1,10 @@
-import React from "react";
-import { useState } from "react";
+import { useState } from 'react';
 
-const ItemCount = ({ stock, initial, onAdd }) => {
+const ItemCount = ({ stock, initial }) => {
     const [estado, setEstado] = useState(initial);
 
     const sumar = () => {
+        console.log(estado);
         if (estado < stock) {
             setEstado(estado + 1);
         }
@@ -17,18 +17,14 @@ const ItemCount = ({ stock, initial, onAdd }) => {
     };
 
     return (
-        <div>
-            <div className="cantidad">
-                <button onClick={sumar}>+</button>
-                <b>{estado}</b>
-                <button onClick={restar}>-</button>
-            </div>
-            <button
-                className="[background-color:#ebecee] [color:#4a3933] rounded-lg font-bold p-1 py-2"
-                onClick={() => {
-                    onAdd(estado);
-                }}>
-                Agregar al carrito
+        <div className="flex">
+            <p className="mr-6">Cantidad:</p>
+            <button className="mx-4 px-2 hover:bg-red-500 hover:text-gray-100" onClick={sumar}>
+                +
+            </button>
+            <b>{estado}</b>
+            <button className="mx-4 px-2 hover:bg-red-500 hover:text-gray-100" onClick={restar}>
+                -
             </button>
         </div>
     );

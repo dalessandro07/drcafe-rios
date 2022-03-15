@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-const CartWidget = () => {
+const CartWidget = ({ url }) => {
     return (
         <div className="flex items-center mx-4" id="cart-container">
-            <span className="material-icons cart-icon text-gray-100">shopping_cart</span>
+            <span className={`${url !== '/' ? '[color:#4a3933]' : 'text-gray-100'} material-icons cart-icon`}>shopping_cart</span>
         </div>
     );
 };

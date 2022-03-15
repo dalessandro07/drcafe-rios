@@ -4,6 +4,7 @@
 
 #root {
     background-color: #f6f2ee;
+    overflow-x: hidden;
 }
 
 .index-page {
