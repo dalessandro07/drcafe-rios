@@ -1,7 +1,12 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import ItemCount from './ItemCount';
 
 const ItemDetail = ({ producto, urlID }) => {
     const detalleProd = producto.find((item) => item.id === urlID);
+    const [cantidad, setCantidad] = useState(0);
+    const navigateTo = useNavigate();
 
     let stairs = [];
 
@@ -13,11 +18,18 @@ const ItemDetail = ({ producto, urlID }) => {
         );
     }
 
+    const onAdd = (cantidadSeleccionada) => {
+        if (cantidadSeleccionada <= detalleProd.stock) {
+            setCantidad(cantidadSeleccionada);
+        }
+    };
+
     return (
         <section className="text-gray-700 mb-20 body-font overflow-hidden">
             <div className="container px-5 pt-20 mx-auto">
                 <div className="lg:justify-around lg:items-center mx-auto flex flex-wrap">
-                    <img alt="ecommerce" className="max-w-[600px] max-h-[300px] object-cover object-center rounded border border-gray-200" src={detalleProd.img} />
+                    <div className={'w-full h-[300px] absolute left-0 z-0 opacity-50 ' + detalleProd.color}></div>
+                    <img alt="ecommerce" className="relative py-2 max-w-[600px] max-h-[300px] object-cover object-center rounded border border-gray-200" src={detalleProd.img} />
                     <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                         <h2 className="text-sm title-font text-gray-500 tracking-widest">DR CAFE</h2>
                         <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{detalleProd.nombre}</h1>
@@ -25,9 +37,12 @@ const ItemDetail = ({ producto, urlID }) => {
                             <span className="flex items-center my-2">{stairs}</span>
                         </div>
                         {detalleProd.descripcion}
+                        <p className="my-4 inline-block border-b border-b-red-500">Stock disponible: {detalleProd.stock}</p>
                         <div className="flex mt-6 flex-col pb-5 border-b-2 border-gray-200 mb-5">
                             <div className="flex items-center">
-                                <span className="mr-3">Tamaño</span>
+                                <span className="mr-3">
+                                    <b>Tamaño:</b>
+                                </span>
                                 <div className="relative">
                                     <select className="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10">
                                         <option>340gr</option>
@@ -40,13 +55,23 @@ const ItemDetail = ({ producto, urlID }) => {
                                     </span>
                                 </div>
                             </div>
-                            <div className="flex mt-8">
-                                <ItemCount stock={detalleProd.stock} initial={1} />
+                            <div className="flex flex-col mt-4">
+                                <span className="title-font font-medium my-4 text-2xl text-gray-900">S/{detalleProd.precio}</span>
+                                {cantidad !== 0 ? (
+                                    <>
+                                        <div className="hidden">{toast.success(`¡Has agregado ${cantidad} unidades de ${detalleProd.nombre} al carrito!`, { autoClose: 2000 })}</div>
+                                        <button
+                                            onClick={() => {
+                                                navigateTo('/carrito');
+                                            }}
+                                            className="flex justify-center items-center rounded-lg ml-auto text-white bg-red-500 border-0 my-4 py-2 px-6 focus:outline-none hover:opacity-80">
+                                            Finalizar Compra
+                                        </button>
+                                    </>
+                                ) : (
+                                    <ItemCount stock={detalleProd.stock} initial={1} onAdd={onAdd} />
+                                )}
                             </div>
-                        </div>
-                        <div className="flex">
-                            <span className="title-font font-medium text-2xl text-gray-900">S/{detalleProd.precio}</span>
-                            <button className="flex rounded-lg ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:opacity-80">Comprar ahora</button>
                         </div>
                     </div>
                 </div>

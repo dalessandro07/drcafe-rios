@@ -26,7 +26,7 @@ const dataProductos = {
                     El sabor de este café se caracteriza por delicados aromas florales de cítricos, jazmín, orquídea, y sabores frutales de melocotón, pera, durazno, naranja y chocolate, entre otros. <b>tiene un aroma bello, profundo y elegante</b>
                 </p>,
             ],
-            stock: 35,
+            stock: 25,
             categoria: 'cafes',
         },
         {
@@ -41,7 +41,7 @@ const dataProductos = {
                     cualquier método. <br /> <em>100% orgánico y de calidad internacional</em>. Sus granos densos y duros aseguran más azúcares y un mejor sabor al tostarlo.
                 </p>,
             ],
-            stock: 75,
+            stock: 35,
             categoria: 'cafes',
         },
         {
@@ -56,7 +56,7 @@ const dataProductos = {
                     cualquier método. <br /> <em>100% orgánico y de calidad internacional</em>. Sus granos densos y duros aseguran más azúcares y un mejor sabor al tostarlo.
                 </p>,
             ],
-            stock: 57,
+            stock: 37,
             categoria: 'cafes',
         },
     ],
@@ -73,7 +73,7 @@ const dataProductos = {
                     cualquier método. <br /> <em>100% orgánico y de calidad internacional</em>. Sus granos densos y duros aseguran más azúcares y un mejor sabor al tostarlo.
                 </p>,
             ],
-            stock: 29,
+            stock: 12,
             categoria: 'chocolates',
             color: 'bg-red-200',
         },
@@ -88,7 +88,7 @@ const dataProductos = {
                     El sabor de este café se caracteriza por delicados aromas florales de cítricos, jazmín, orquídea, y sabores frutales de melocotón, pera, durazno, naranja y chocolate, entre otros. <b>tiene un aroma bello, profundo y elegante</b>
                 </p>,
             ],
-            stock: 37,
+            stock: 21,
             categoria: 'chocolates',
             color: 'bg-blue-200',
         },
@@ -104,7 +104,7 @@ const dataProductos = {
                     cualquier método. <br /> <em>100% orgánico y de calidad internacional</em>. Sus granos densos y duros aseguran más azúcares y un mejor sabor al tostarlo.
                 </p>,
             ],
-            stock: 42,
+            stock: 28,
             categoria: 'chocolates',
             color: 'bg-orange-200',
         },
@@ -120,7 +120,7 @@ const dataProductos = {
                     cualquier método. <br /> <em>100% orgánico y de calidad internacional</em>. Sus granos densos y duros aseguran más azúcares y un mejor sabor al tostarlo.
                 </p>,
             ],
-            stock: 49,
+            stock: 36,
             categoria: 'chocolates',
             color: 'bg-violet-200',
         },

@@ -25,7 +25,7 @@ const ItemDetailContainer = () => {
             .catch((error) => {
                 console.error(error);
             });
-    }, [id]);
+    });
 
     if (loading) {
         return (

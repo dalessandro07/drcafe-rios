@@ -24,7 +24,7 @@ const Nav = ({ url }) => {
             </ul>
             <div className="flex justify-end">
                 <Link to="/contacto">
-                    <b className="[background-color:#4a3933] [color:#ebecee] rounded-lg font-bold px-4 mx-8 p-1 text-gray-100 font-bold">Contacto</b>
+                    <b className="[background-color:#4a3933] [color:#ebecee] rounded-lg px-4 mx-8 p-1 text-gray-100 font-bold">Contacto</b>
                 </Link>
                 <Link to="/carrito">
                     <CartWidget url={url} />
