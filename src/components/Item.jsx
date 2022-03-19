@@ -16,10 +16,10 @@ const Item = ({ producto }) => {
             <Link className={`flex justify-center ${producto.color}`} to={`/productos/${producto.categoria}/${producto.id}`}>
                 <img className="rounded-t-lg max-h-[250px] object-cover" src={producto.img} alt="producto" />
             </Link>
-            <div className="px-5 py-5 pb-5">
-                <div className="flex justify-between">
+            <div className="flex flex-col h-2/4 px-5 py-5 pb-5">
+                <div className="flex items-center justify-between">
                     <Link to={`/productos/${producto.categoria}/${producto.id}`}>
-                        <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{producto.nombre}</h5>
+                        <h5 className="text-xl pb-4 font-semibold tracking-tight text-gray-900 dark:text-white">{producto.nombre}</h5>
                     </Link>
 
                     <div className="flex items-center mt-2.5 mb-5">
@@ -27,8 +27,8 @@ const Item = ({ producto }) => {
                         <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">{producto.estrellas}.0</span>
                     </div>
                 </div>
-                <div className="flex flex-col justify-between">
-                    <span className="text-lg font-bold text-gray-300 line-through dark:text-white">S/ {producto.precio + 10}</span>
+                <div className="flex grow flex-col justify-between">
+                    <span className="text-sm font-bold text-gray-300 line-through dark:text-white">S/ {producto.precio + 10}</span>
                     <div className="flex justify-between items-center">
                         <span className="text-3xl font-bold text-gray-900 dark:text-white">S/ {producto.precio}</span>
                         <span className="text-sm font-bold text-gray-900 dark:text-white">Disponibles: {producto.stock}</span>

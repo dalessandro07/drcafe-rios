@@ -7,7 +7,7 @@ const getData = () => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(dataProductos);
-        }, 2000);
+        }, 200);
     });
 };
 
@@ -47,7 +47,7 @@ const ItemDetailContainer = () => {
             </button>
         );
     } else {
-        return <ItemDetail producto={categoria === 'chocolates' ? detalle.chocolates : detalle.cafes} urlID={parseInt(id)} />;
+        return <ItemDetail producto={categoria === 'chocolates' ? detalle.chocolates : detalle.cafes} urlID={id} />;
     }
 };
 

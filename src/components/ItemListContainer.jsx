@@ -7,7 +7,7 @@ const getData = () => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(dataProductos);
-        }, 2000);
+        }, 200);
     });
 };
 
@@ -30,9 +30,16 @@ const ItemListContainer = () => {
 
     return (
         <>
-            <h2 className="text-3xl font-bold [color:#4a3933] underline p-8">{categoria === 'cafes' ? 'Bolsas de Café' : 'Barras de Chocolate'}</h2>
+            {categoria ? <h2 className="text-3xl font-bold [color:#4a3933] underline p-8">{categoria === 'cafes' ? 'Bolsas de Café' : 'Barras de Chocolate'}</h2> : <h2 className="text-3xl font-bold [color:#4a3933] underline p-8">Productos</h2>}
             {!loading ? (
-                <ItemList data={categoria === 'cafes' ? productos.cafes : productos.chocolates} />
+                categoria ? (
+                    <ItemList data={categoria === 'cafes' ? productos.cafes : productos.chocolates} />
+                ) : (
+                    <>
+                        <ItemList data={productos.cafes} />
+                        <ItemList data={productos.chocolates} />
+                    </>
+                )
             ) : (
                 <button
                     disabled

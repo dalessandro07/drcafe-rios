@@ -1,7 +1,7 @@
 const dataProductos = {
     cafes: [
         {
-            id: 1,
+            id: 'cafe-etiopia',
             nombre: 'Café Etiopía',
             precio: 49.9,
             img: '/assets/images/coffee-1.jpg',
@@ -16,7 +16,7 @@ const dataProductos = {
             categoria: 'cafes',
         },
         {
-            id: 2,
+            id: 'cafe-panama',
             nombre: 'Café Panamá',
             precio: 45.9,
             img: '/assets/images/coffee-4.jpg',
@@ -30,7 +30,7 @@ const dataProductos = {
             categoria: 'cafes',
         },
         {
-            id: 3,
+            id: 'cafe-guatemala',
             nombre: 'Café Guatemala',
             precio: 39.9,
             img: '/assets/images/coffee-3.jpg',
@@ -45,7 +45,7 @@ const dataProductos = {
             categoria: 'cafes',
         },
         {
-            id: 4,
+            id: 'cafe-papuang',
             nombre: 'Café Papúa N.G.',
             precio: 29.9,
             img: '/assets/images/coffee-2.jpg',
@@ -62,7 +62,7 @@ const dataProductos = {
     ],
     chocolates: [
         {
-            id: 1,
+            id: 'chocolate-blanco',
             nombre: 'Chocolate Blanco',
             precio: 35.9,
             img: '/assets/images/chocolate-1.png',
@@ -78,8 +78,8 @@ const dataProductos = {
             color: 'bg-red-200',
         },
         {
-            id: 2,
-            nombre: 'Chocolate Negro',
+            id: 'chocolate-nueces',
+            nombre: 'Chocolate con Nueces',
             precio: 30.5,
             img: '/assets/images/chocolate-2.png',
             estrellas: 5,
@@ -93,7 +93,7 @@ const dataProductos = {
             color: 'bg-blue-200',
         },
         {
-            id: 3,
+            id: 'chocolate-mani',
             nombre: 'Chocolate con Maní',
             precio: 25.9,
             img: '/assets/images/chocolate-3.png',
@@ -109,7 +109,7 @@ const dataProductos = {
             color: 'bg-orange-200',
         },
         {
-            id: 4,
+            id: 'chocolate-pasas',
             nombre: 'Chocolate con pasas',
             precio: 19.9,
             img: '/assets/images/chocolate-4.png',
