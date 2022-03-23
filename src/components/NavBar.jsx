@@ -26,7 +26,7 @@ const NavBar = ({ url }) => {
                             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                                 <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                                     <span className="sr-only">Abrir menu</span>
-                                    {open ? <XIcon className="block h-6 w-6" aria-hidden="true" /> : <MenuIcon className="block h-6 w-6" aria-hidden="true" />}
+                                    {open ? <XIcon className="block h-6 w-6" aria-hidden="true" /> : <MenuIcon className={`${pathname === '/' ? 'text-white' : 'text-[#4a3933]'} block h-6 w-6`} aria-hidden="true" />}
                                 </Disclosure.Button>
                             </div>
                             <div className="flex-1 flex items-center justify-center sm:justify-start">
@@ -57,9 +57,7 @@ const NavBar = ({ url }) => {
                             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                                 <Menu as="div" className="ml-3 relative">
                                     <div>
-                                        <Link to="/carrito">
-                                            <CartWidget url={url} />
-                                        </Link>
+                                        <CartWidget url={url} />
                                     </div>
                                 </Menu>
                             </div>
@@ -73,7 +71,18 @@ const NavBar = ({ url }) => {
                                     key={item.name}
                                     as="a"
                                     href={item.href}
-                                    className={classNames(item.current ? 'bg-red-500 text-white' : 'text-gray-600 hover:bg-gray-700 hover:text-white', 'block px-3 py-2 rounded-md text-base font-medium')}
+                                    className={classNames(
+                                        item.current
+                                            ? 'bg-red-500 text-white'
+                                            : `${
+                                                  pathname === '/'
+                                                      ? 'text-gray-100 hover:bg-red-100 hover:text-gray-800 px-3 py-2 rounded-md text-md font-semibold'
+                                                      : item.current
+                                                      ? 'bg-red-100 px-3 py-2 rounded-md text-md font-semibold'
+                                                      : 'hover:bg-red-100 hover:text-gray-800 px-3 py-2 rounded-md text-md font-semibold'
+                                              }`,
+                                        'block px-3 py-2 rounded-md text-base font-medium'
+                                    )}
                                     aria-current={item.current ? 'page' : undefined}>
                                     {item.name}
                                 </Disclosure.Button>

@@ -13,3 +13,21 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+body::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+body::-webkit-scrollbar:vertical {
+    width: 13px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #4a3933;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+
+body::-webkit-scrollbar-track {
+    border-radius: 10px;
+}

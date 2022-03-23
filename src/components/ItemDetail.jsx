@@ -1,12 +1,9 @@
-import { useState, useContext } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useContext } from 'react';
 import ItemCount from './ItemCount';
 import { contexto } from './../context/CartContext';
 
 const ItemDetail = ({ producto, urlID }) => {
     const detalleProd = producto.find((item) => item.id === urlID);
-    const [cantidad, setCantidad] = useState(0);
-    const navigateTo = useNavigate();
 
     const { carrito, addItem } = useContext(contexto);
 
@@ -22,7 +19,6 @@ const ItemDetail = ({ producto, urlID }) => {
 
     const onAdd = (cantidadSeleccionada) => {
         if (cantidadSeleccionada <= detalleProd.stock) {
-            setCantidad(cantidadSeleccionada);
             addItem(detalleProd, cantidadSeleccionada);
         }
     };
@@ -30,14 +26,27 @@ const ItemDetail = ({ producto, urlID }) => {
     const agregadosAlCarrito = carrito.find((item) => item.producto.id === detalleProd.id);
 
     return (
-        <section className="text-gray-700 mb-20 body-font overflow-hidden">
+        <section className="text-gray-700 mb-20 body-font overflow-hidden sm:px-20">
             <div className="container px-5 pt-20 mx-auto">
-                <div className="lg:justify-around lg:items-center mx-auto flex flex-wrap">
-                    <div className={'w-full h-[300px] absolute left-0 z-0 opacity-50 lg:w-2/5 lg:h-full ' + detalleProd.color}></div>
-                    <img alt="ecommerce" className="relative py-2 max-w-[600px] max-h-[300px] object-cover object-center rounded border border-gray-200" src={detalleProd.img} />
-                    <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+                <div className="lg:justify-start lg:items-center mx-auto flex flex-col flex-wrap lg:shadow-lg">
+                    {detalleProd.color ? (
+                        <div className={'w-full h-2/5 left-0 z-0 ' + detalleProd.color}>
+                            <img alt="ecommerce" className="relative py-2 object-cover object-center rounded-lg md:ml-8 lg:ml-28" src={detalleProd.img} />
+                        </div>
+                    ) : (
+                        <div className={'w-full h-2/5 left-0 z-0 md:flex md:justify-start lg:w-4/5 lg:pl-10'}>
+                            <img alt="ecommerce" className="relative md:w-4/5 py-2 object-cover object-center md:pl-10 lg:pl-0 lg:w-3/5 rounded-lg" src={detalleProd.img} />
+                        </div>
+                    )}
+
+                    <div className="md:pl-10 lg:py-6 mt-6 lg:mt-0 md:w-4/5">
                         <h2 className="text-sm title-font text-gray-500 tracking-widest">DR CAFE</h2>
-                        <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{detalleProd.nombre}</h1>
+                        <div className="flex flex-col sm:flex-row">
+                            <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{detalleProd.nombre}</h1>
+                            <b className="w-full flex py-4 sm:justify-end sm:pt-8 sm:px-2 text-indigo-500">
+                                {agregadosAlCarrito ? `¡Tienes ${agregadosAlCarrito.cantidad} ${agregadosAlCarrito.cantidad === 1 ? 'unidad' : 'unidades'} de ${agregadosAlCarrito.producto.nombre} en el carrito!` : '¡Empieza a comprar!'}
+                            </b>
+                        </div>
                         <div className="flex mb-4">
                             <span className="flex items-center my-2">{stairs}</span>
                         </div>
@@ -62,26 +71,8 @@ const ItemDetail = ({ producto, urlID }) => {
                             </div>
                             <div className="flex flex-col mt-4">
                                 <span className="title-font font-medium my-4 text-2xl text-gray-900">S/{detalleProd.precio}</span>
-                                {cantidad !== 0 ? (
-                                    <div className="flex justify-between items-center w-full">
-                                        <Link className="font-semibold bg-slate-200 rounded-lg py-2 px-4" to={'/productos'}>
-                                            ⬅️ Seguir comprando
-                                        </Link>
-                                        <button
-                                            onClick={() => {
-                                                navigateTo('/carrito');
-                                            }}
-                                            className="flex justify-center items-center rounded-lg ml-auto text-white bg-red-500 border-0 my-4 py-2 px-6 focus:outline-none hover:opacity-80">
-                                            Finalizar Compra
-                                        </button>
-                                    </div>
-                                ) : (
-                                    <ItemCount stock={detalleProd.stock} initial={1} onAdd={onAdd} />
-                                )}
+                                <ItemCount stock={detalleProd.stock} initial={1} onAdd={onAdd} />
                             </div>
-                            <b className="w-full flex justify-start pt-8 px-2 text-indigo-500">
-                                {agregadosAlCarrito ? `¡Tienes ${agregadosAlCarrito.cantidad} unidades de ${agregadosAlCarrito.producto.nombre} en el carrito!` : '¡Empieza a comprar!'}
-                            </b>
                         </div>
                     </div>
                 </div>

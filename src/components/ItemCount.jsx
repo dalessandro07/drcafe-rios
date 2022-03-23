@@ -49,7 +49,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
                         onAdd(estado);
                         actualizarEstado();
                     }}
-                    className="sm:flex rounded-lg ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:opacity-80">
+                    className="sm:flex rounded-lg ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:opacity-80 mt-8 sm:mt-0">
                     Agregar al carrito
                 </button>
             </div>

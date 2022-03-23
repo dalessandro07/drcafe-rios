@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { contexto } from './../context/CartContext';
+import { useContext } from 'react';
 
 const Item = ({ producto }) => {
     let stairs = [];
@@ -10,6 +12,8 @@ const Item = ({ producto }) => {
             </svg>
         );
     }
+
+    const { addItem } = useContext(contexto);
 
     return (
         <div className="max-w-sm bg-white m-4 grow rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
@@ -33,7 +37,9 @@ const Item = ({ producto }) => {
                         <span className="text-3xl font-bold text-gray-900 dark:text-white">S/ {producto.precio}</span>
                         <span className="text-sm font-bold text-gray-900 dark:text-white">Disponibles: {producto.stock}</span>
                     </div>
-                    <button className="[background-color:#4a3933] [color:#ebecee] my-4 rounded-lg hover:opacity-90 font-bold px-4 py-2">Agregar al carrito</button>
+                    <button onClick={() => addItem(producto, 1)} className="[background-color:#4a3933] [color:#ebecee] my-4 rounded-lg hover:opacity-90 font-bold px-4 py-2">
+                        Agregar al carrito
+                    </button>
                 </div>
             </div>
         </div>

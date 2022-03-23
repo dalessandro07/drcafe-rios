@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import data from '../data/productos';
 
 const Footer = () => {
     return (
@@ -27,26 +28,15 @@ const Footer = () => {
                                 <p className="font-semibold tracking-wide text-teal-accent-400">Cafés</p>
                             </Link>
                             <ul className="mt-2 space-y-2">
-                                <li>
-                                    <a href="/" className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
-                                        Ofertas
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/" className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
-                                        Promociones
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/" className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
-                                        Importados
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/" className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
-                                        Nacionales
-                                    </a>
-                                </li>
+                                {data.cafes.map((cafe) => {
+                                    return (
+                                        <li key={cafe.id}>
+                                            <Link to={`/productos/cafes/${cafe.id}`} className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
+                                                {cafe.nombre}
+                                            </Link>
+                                        </li>
+                                    );
+                                })}
                             </ul>
                         </div>
                         <div>
@@ -54,31 +44,15 @@ const Footer = () => {
                                 <p className="font-semibold tracking-wide text-teal-accent-400">Chocolates</p>
                             </Link>
                             <ul className="mt-2 space-y-2">
-                                <li>
-                                    <a href="/" className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
-                                        Ofertas
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/" className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
-                                        Promociones
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/" className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
-                                        Importados
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/" className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
-                                        Nacionales
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/" className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
-                                        Nuevos
-                                    </a>
-                                </li>
+                                {data.chocolates.map((choco) => {
+                                    return (
+                                        <li key={choco.id}>
+                                            <Link to={`/productos/chocolates/${choco.id}`} className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
+                                                {choco.nombre}
+                                            </Link>
+                                        </li>
+                                    );
+                                })}
                             </ul>
                         </div>
                     </div>
