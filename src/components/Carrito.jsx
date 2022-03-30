@@ -68,7 +68,7 @@ const Carrito = () => {
 
                 {carrito.length > 0 ? (
                     <div className="px-10 w-full flex flex-col">
-                        <Link to="/" className="py-2 w-full rounded bg-indigo-500 text-center text-base text-white hover:bg-indigo-600">
+                        <Link to="/checkout" className="py-2 w-full rounded bg-indigo-500 text-center text-base text-white hover:bg-indigo-600">
                             Ir a pagar
                         </Link>
                         <p className="mt-3 text-center text-base text-gray-500">

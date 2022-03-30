@@ -1,7 +1,33 @@
 import { Link } from 'react-router-dom';
-import data from '../data/productos';
+import { useState, useEffect } from 'react';
+import { db } from '../firebase';
+import { getDocs, collection } from 'firebase/firestore';
 
 const Footer = () => {
+    const [cafes, setCafes] = useState([]);
+    const [chocolates, setChocolates] = useState([]);
+
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const coleccionProductos = collection(db, 'productos');
+
+        const pedirDatos = async () => {
+            const resultado = await getDocs(coleccionProductos);
+            resultado.docs.map((doc) => {
+                if (doc.data().categoria === 'cafes') {
+                    return setCafes((cafes) => [...cafes, doc.data()]);
+                } else {
+                    return setChocolates((chocolates) => [...chocolates, doc.data()]);
+                }
+            });
+
+            setLoading(false);
+        };
+
+        pedirDatos();
+    }, []);
+
     return (
         <div className="relative bg-deep-purple-accent-400 border [border-top:0.05px solid #4a393329]">
             <div className="px-4 pt-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
@@ -28,15 +54,24 @@ const Footer = () => {
                                 <p className="font-semibold tracking-wide text-teal-accent-400">Cafés</p>
                             </Link>
                             <ul className="mt-2 space-y-2">
-                                {data.cafes.map((cafe) => {
-                                    return (
-                                        <li key={cafe.id}>
-                                            <Link to={`/productos/cafes/${cafe.id}`} className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
-                                                {cafe.nombre}
-                                            </Link>
-                                        </li>
-                                    );
-                                })}
+                                {loading ? (
+                                    <button
+                                        disabled
+                                        type="button"
+                                        className="py-2.5 w-full h-full flex justify-center my-12 px-5 mr-2 text-sm font-medium text-gray-900 rounded-lg  hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 items-center">
+                                        Cargando datos ...
+                                    </button>
+                                ) : (
+                                    cafes.map((cafe) => {
+                                        return (
+                                            <li key={cafe.id}>
+                                                <Link to={`/productos/cafes/${cafe.id}`} className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
+                                                    {cafe.nombre}
+                                                </Link>
+                                            </li>
+                                        );
+                                    })
+                                )}
                             </ul>
                         </div>
                         <div>
@@ -44,15 +79,24 @@ const Footer = () => {
                                 <p className="font-semibold tracking-wide text-teal-accent-400">Chocolates</p>
                             </Link>
                             <ul className="mt-2 space-y-2">
-                                {data.chocolates.map((choco) => {
-                                    return (
-                                        <li key={choco.id}>
-                                            <Link to={`/productos/chocolates/${choco.id}`} className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
-                                                {choco.nombre}
-                                            </Link>
-                                        </li>
-                                    );
-                                })}
+                                {loading ? (
+                                    <button
+                                        disabled
+                                        type="button"
+                                        className="py-2.5 w-full h-full flex justify-center my-12 px-5 mr-2 text-sm font-medium text-gray-900 rounded-lg  hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 items-center">
+                                        Cargando datos ...
+                                    </button>
+                                ) : (
+                                    chocolates.map((choco) => {
+                                        return (
+                                            <li key={choco.id}>
+                                                <Link to={`/productos/chocolates/${choco.id}`} className="transition-colors duration-300 text-deep-purple-50 hover:text-teal-accent-400">
+                                                    {choco.nombre}
+                                                </Link>
+                                            </li>
+                                        );
+                                    })
+                                )}
                             </ul>
                         </div>
                     </div>

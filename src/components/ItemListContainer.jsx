@@ -1,31 +1,33 @@
 import ItemList from './ItemList';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import dataProductos from '../data/productos';
-
-const getData = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(dataProductos);
-        }, 200);
-    });
-};
+import { db } from './../firebase';
+import { getDocs, collection } from 'firebase/firestore';
 
 const ItemListContainer = () => {
-    const [productos, setProductos] = useState([]);
+    const [cafes, setCafes] = useState([]);
+    const [chocolates, setChocolates] = useState([]);
+
     const [loading, setLoading] = useState(true);
     const { categoria } = useParams();
 
     useEffect(() => {
-        getData()
-            .then((res) => {
-                setProductos(res);
-                setLoading(false);
-            })
-            .catch((error) => {
-                console.error(error);
+        const coleccionProductos = collection(db, 'productos');
+
+        const pedirDatos = async () => {
+            const resultado = await getDocs(coleccionProductos);
+            resultado.docs.map((doc) => {
+                if (doc.data().categoria === 'cafes') {
+                    return setCafes((cafes) => [...cafes, doc.data()]);
+                } else {
+                    return setChocolates((chocolates) => [...chocolates, doc.data()]);
+                }
             });
-        return () => {};
+
+            setLoading(false);
+        };
+
+        pedirDatos();
     }, []);
 
     return (
@@ -33,11 +35,11 @@ const ItemListContainer = () => {
             {categoria ? <h2 className="text-3xl font-bold [color:#4a3933] underline p-8">{categoria === 'cafes' ? 'Bolsas de Café' : 'Barras de Chocolate'}</h2> : <h2 className="text-3xl font-bold [color:#4a3933] underline p-8">Productos</h2>}
             {!loading ? (
                 categoria ? (
-                    <ItemList data={categoria === 'cafes' ? productos.cafes : productos.chocolates} />
+                    <ItemList data={categoria === 'cafes' ? cafes : chocolates} />
                 ) : (
                     <>
-                        <ItemList data={productos.cafes} />
-                        <ItemList data={productos.chocolates} />
+                        <ItemList data={cafes} />
+                        <ItemList data={chocolates} />
                     </>
                 )
             ) : (

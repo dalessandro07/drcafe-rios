@@ -15,9 +15,16 @@ const Item = ({ producto }) => {
 
     const { addItem } = useContext(contexto);
 
+    const bgColor = {
+        blue: 'bg-blue-200/50',
+        red: 'bg-red-200/50',
+        orange: 'bg-orange-200/50',
+        violet: 'bg-violet-200/50',
+    };
+
     return (
         <div className="max-w-sm bg-white m-4 grow rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-            <Link className={`flex justify-center ${producto.color}`} to={`/productos/${producto.categoria}/${producto.id}`}>
+            <Link className={`flex justify-center ${bgColor[producto.color]}`} to={`/productos/${producto.categoria}/${producto.id}`}>
                 <img className="rounded-t-lg max-h-[250px] object-cover" src={producto.img} alt="producto" />
             </Link>
             <div className="flex flex-col h-2/4 px-5 py-5 pb-5">

@@ -1,6 +1,8 @@
 import Item from './Item';
 
 const ItemList = ({ data }) => {
+    console.log(data);
+
     return (
         <div className="flex flex-wrap justify-center xl:flex-nowrap">
             {data.map((producto) => {
