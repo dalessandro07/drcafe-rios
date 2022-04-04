@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
 export const contexto = createContext();
@@ -10,12 +10,24 @@ const CartProvider = ({ children }) => {
     const [cantidadTotal, setCantidadTotal] = useState(0);
     const [total, setTotal] = useState(0);
 
-    const addItem = (producto, cantidad) => {
+    useEffect(() => {
+        const carritoLocal = JSON.parse(localStorage.getItem('carrito'));
+        const cantidadTotalLocal = JSON.parse(localStorage.getItem('cantidadTotal'));
+        const totalLocal = JSON.parse(localStorage.getItem('total'));
+
+        if (carritoLocal) {
+            setCarrito(carritoLocal);
+            setCantidadTotal(cantidadTotalLocal);
+            setTotal(totalLocal);
+        }
+    }, []);
+
+    const addItem = (producto, cantidad, alert) => {
         const copiaCarrito = [...carrito];
 
         if (!isInCart(producto.id)) {
             setCarrito([...carrito, { producto, cantidad }]);
-            toast.success(`¡Has agregado ${cantidad} unidades de ${producto.nombre} al carrito!`, { autoClose: 2000, position: 'top-left' });
+
             const totalParcial = producto.precio * cantidad;
             setTotal(parseFloat(total) + parseFloat(totalParcial));
 
@@ -26,7 +38,7 @@ const CartProvider = ({ children }) => {
             if (copiaCarrito[indexProd].producto.stock >= copiaCarrito[indexProd].cantidad + cantidad) {
                 copiaCarrito[indexProd].cantidad += cantidad;
                 setCarrito(copiaCarrito);
-                toast.success(`¡Has agregado ${cantidad} unidades de ${producto.nombre} al carrito!`, { autoClose: 2000, position: 'top-left' });
+
                 const totalParcial = producto.precio * cantidad;
                 setTotal(parseFloat(total) + parseFloat(totalParcial));
 
@@ -50,15 +62,49 @@ const CartProvider = ({ children }) => {
 
         copiaCarrito.splice(indexProd, 1);
         setCarrito(copiaCarrito);
+
+        if (copiaCarrito.length === 0) {
+            clearCart();
+        }
     };
 
     const clearCart = () => {
         setCarrito([]);
         setCantidadTotal(0);
         setTotal(0);
+
+        localStorage.removeItem('carrito');
+        localStorage.removeItem('cantidadTotal');
+        localStorage.removeItem('total');
     };
 
-    return <Provider value={{ carrito, addItem, removeItem, clearCart, cantidadTotal, total }}>{children}</Provider>;
+    const increaseQuantity = (producto, cantidad) => {
+        addItem(producto, cantidad, false);
+    };
+
+    const decreaseQuantity = (producto, cantidad) => {
+        const copiaCarrito = [...carrito];
+
+        const indexProd = carrito.findIndex((prod) => prod.producto.id === producto.id);
+
+        if (copiaCarrito[indexProd].cantidad > 1) {
+            copiaCarrito[indexProd].cantidad -= cantidad;
+            setCarrito(copiaCarrito);
+
+            setCantidadTotal(parseFloat(cantidadTotal) - parseFloat(cantidad));
+            setTotal((total - copiaCarrito[indexProd].producto.precio * cantidad).toFixed(2));
+        } else {
+            removeItem(producto.id);
+        }
+    };
+
+    if (carrito.length > 0) {
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        localStorage.setItem('cantidadTotal', cantidadTotal);
+        localStorage.setItem('total', total);
+    }
+
+    return <Provider value={{ carrito, addItem, removeItem, clearCart, cantidadTotal, total, increaseQuantity, decreaseQuantity }}>{children}</Provider>;
 };
 
 export default CartProvider;
