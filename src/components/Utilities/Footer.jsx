@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { db } from '../firebase';
+import { db } from '../../firebase';
 import { getDocs, collection } from 'firebase/firestore';
+
+import { motion } from 'framer-motion';
 
 const Footer = () => {
     const [cafes, setCafes] = useState([]);
@@ -102,7 +104,6 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="flex flex-col justify-between pt-5 pb-10 border-t border-deep-purple-accent-200 sm:flex-row">
-                    <p className="text-sm text-gray-100">© Copyright 2020 Lorem Inc. All rights reserved.</p>
                     <div className="flex items-center mt-4 space-x-4 sm:mt-0">
                         <a href="/" className="transition-colors duration-300 text-deep-purple-100 hover:text-teal-accent-400">
                             <svg viewBox="0 0 24 24" fill="currentColor" className="h-5">
@@ -121,6 +122,25 @@ const Footer = () => {
                             </svg>
                         </a>
                     </div>
+                    <br />
+                    <p className="text-sm">
+                        Powered and Designed by{' '}
+                        <motion.a
+                            className="font-bold inline-block"
+                            whileHover={{
+                                scale: 1.1,
+                                transition: {
+                                    duration: 0.5,
+                                    ease: 'easeInOut',
+                                },
+                            }}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href="https://www.linkedin.com/in/alessandro-rios/">
+                            Alessandro Rios
+                        </motion.a>
+                    </p>
+                    <p className="text-sm">© Copyright 2020. All rights reserved.</p>
                 </div>
             </div>
         </div>

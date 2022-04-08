@@ -41,7 +41,7 @@ const Item = ({ producto }) => {
                     whileHover={{
                         scale: 1.2,
                         transition: {
-                            duration: 1.5,
+                            duration: 1,
                             type: 'spring',
                         },
                     }}

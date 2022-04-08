@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 const ItemCount = ({ stock, initial, onAdd }) => {
     const [estado, setEstado] = useState(initial);
+    const [agregado, setAgregado] = useState(false);
 
     const sumar = () => {
         if (estado < stock) {
@@ -35,22 +36,30 @@ const ItemCount = ({ stock, initial, onAdd }) => {
                         <b>Cantidad:</b>
                     </p>
                     <div className="flex items-center">
-                        <button className="mx-4 px-2 hover:bg-red-500 hover:text-gray-100" onClick={sumar}>
-                            +
+                        <button className="mx-4 p-2 hover:bg-red-500 hover:text-gray-100" onClick={restar}>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M20 12H4" />
+                            </svg>
                         </button>
                         <b>{estado}</b>
-                        <button className="mx-4 px-2 hover:bg-red-500 hover:text-gray-100" onClick={restar}>
-                            -
+                        <button className="mx-4 p-2 hover:bg-red-500 hover:text-gray-100" onClick={sumar}>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                            </svg>
                         </button>
                     </div>
                 </div>
                 <button
                     onClick={() => {
                         onAdd(estado);
+                        setAgregado(true);
+                        setTimeout(() => {
+                            setAgregado(false);
+                        }, 1000);
                         actualizarEstado();
                     }}
                     className="sm:flex rounded-lg ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:opacity-80 mt-8 sm:mt-0">
-                    Agregar al carrito
+                    {agregado ? 'Agregado ✅' : 'Agregar al carrito'}
                 </button>
             </div>
             <p className={`${stock === 0 ? 'block' : 'hidden'} text-red-500 bg-red-100 rounded p-2 mt-4`}>{'¡No hay stock!'}</p>

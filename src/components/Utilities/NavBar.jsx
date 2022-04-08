@@ -1,7 +1,7 @@
 import { Disclosure, Menu } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { Link, useLocation, NavLink } from 'react-router-dom';
-import CartWidget from './Cart/CartWidget';
+import CartWidget from '../Cart/CartWidget';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
@@ -14,6 +14,11 @@ const NavBar = () => {
         { name: 'Productos', href: '/productos', current: pathname === '/productos' ? true : false },
         { name: 'Cafés', href: '/productos/cafes', current: pathname === '/productos/cafes' ? true : false },
         { name: 'Chocolates', href: '/productos/chocolates', current: pathname === '/productos/chocolates' ? true : false },
+        {
+            name: 'Buscar orden',
+            href: '/buscar-orden',
+            current: pathname === '/buscar-orden' ? true : false,
+        },
     ];
 
     return (

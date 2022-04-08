@@ -1,9 +1,9 @@
-import { contexto } from './../context/CartContext';
+import { contexto } from '../../context/CartContext';
 import { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { db } from '../firebase';
+import { db } from '../../firebase';
 import { collection, serverTimestamp, addDoc, getDocs, query, where, updateDoc, doc } from 'firebase/firestore';
 
 const Checkout = () => {
@@ -29,6 +29,7 @@ const Checkout = () => {
             const ordenCompra = { ...data, items: carrito, total: totalFinal, date: serverTimestamp() };
 
             const ordersCollection = collection(db, 'orders');
+
             const productsCollection = collection(db, 'productos');
 
             const actualizarStock = async (producto, cantidad) => {
@@ -59,7 +60,7 @@ const Checkout = () => {
                     render({ data }) {
                         navigator.clipboard.writeText(data.id);
                         clearCart();
-                        setTimeout(() => navigateTo('/'), 2500);
+                        setTimeout(() => navigateTo('/buscar-orden'), 2500);
                         return (
                             <>
                                 <p>

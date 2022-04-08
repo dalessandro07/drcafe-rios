@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
-import NavBar from './components/NavBar';
-import Hero from './components/Hero';
-import Footer from './components/Footer';
+import NavBar from './components/Utilities/NavBar';
+import Hero from './components/Utilities/Hero';
+import Footer from './components/Utilities/Footer';
 
 import ItemDetailContainer from './components/Products/ItemDetailContainer';
 import ItemListContainer from './components/Products/ItemListContainer';
@@ -11,12 +11,13 @@ import ItemListContainer from './components/Products/ItemListContainer';
 import CartProvider from './context/CartContext';
 import Carrito from './components/Cart/Carrito';
 
-import Checkout from './components/Checkout';
+import Checkout from './components/Checkout/Checkout';
 
 import './Index.css';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import SearchOrder from './components/Checkout/SearchOrder';
 
 const App = () => {
     return (
@@ -30,6 +31,7 @@ const App = () => {
                     <Route path="/productos/:categoria/:id" element={<ItemDetailContainer />} />
                     <Route path="/carrito" element={<Carrito />} />
                     <Route path="/checkout" element={<Checkout />} />
+                    <Route path="/buscar-orden" element={<SearchOrder />} />
                     <Route
                         path="*"
                         element={
