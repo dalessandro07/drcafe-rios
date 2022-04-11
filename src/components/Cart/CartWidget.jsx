@@ -8,11 +8,11 @@ import { motion } from 'framer-motion';
 
 const CartWidget = ({ url }) => {
     const { carrito, cantidadTotal, removeItem, total } = useContext(contexto);
-    const [previewCart, setPreviewCart] = useState(-500);
+    const [previewCart, setPreviewCart] = useState(false);
 
     return (
-        <div onMouseEnter={() => setPreviewCart(0)} className="flex items-center mx-4 px-1 mb-5 pt-5 relative" id="cart-container">
-            <Link onClick={() => setPreviewCart(-500)} to="/carrito">
+        <div onMouseEnter={() => setPreviewCart(true)} className="flex items-center mx-4 px-1 mb-5 pt-5 relative" id="cart-container">
+            <Link onClick={() => setPreviewCart(false)} to="/carrito">
                 <span className="absolute top-0 right-0 text-red-100 bg-red-500 rounded-full px-[6px] text-sm font-bold">{cantidadTotal}</span>
 
                 <span className={`${url !== '/' ? '[color:#4a3933]' : 'text-gray-100'} material-icons cart-icon`}>shopping_cart</span>
@@ -28,18 +28,18 @@ const CartWidget = ({ url }) => {
                     opacity: [0, 1],
                 }}
                 layout
-                className={'hidden xs:flex flex-col absolute top-[120%] rounded-md shadow-2xl bg-[#fcfcfc] w-80 sm:w-96 min-h-80 z-50 overflow-y-auto max-h-[80vh]'}
+                className={'hidden xs:flex flex-col absolute top-[120%] right-0 rounded-md shadow-2xl bg-[#fcfcfc] w-80 sm:w-96 min-h-80 z-50 overflow-y-auto max-h-[80vh]'}
                 style={{
-                    right: previewCart,
+                    display: previewCart ? 'flex' : 'none',
                 }}>
                 <div className="flex justify-between p-4 mb-3 bg-indigo-50">
-                    <Link onClick={() => setPreviewCart(-500)} to="/carrito">
+                    <Link onClick={() => setPreviewCart(false)} to="/carrito">
                         <h1 className="text-indigo-900 text-xl">
                             Carrito<span className="text-red-500">{cantidadTotal !== 0 ? (cantidadTotal > 1 ? `, ${cantidadTotal} unidades` : `, ${cantidadTotal} unidad`) : null}</span>{' '}
                         </h1>
                     </Link>
 
-                    <button className="text-red-500" onClick={() => setPreviewCart(-500)}>
+                    <button className="text-red-500" onClick={() => setPreviewCart(false)}>
                         <XIcon className="h-6 w-6" aria-hidden="true" />
                     </button>
                 </div>
@@ -80,7 +80,7 @@ const CartWidget = ({ url }) => {
                             );
                         })
                     ) : (
-                        <Link onClick={() => setPreviewCart(-500)} to="/productos">
+                        <Link onClick={() => setPreviewCart(false)} to="/productos">
                             <h2 className="text-xl text-indigo-900 text-center font-bold underline p-8">¡El carrito está vacío!</h2>
                         </Link>
                     )}
@@ -90,7 +90,7 @@ const CartWidget = ({ url }) => {
                     </div>
 
                     <div className="bg-indigo-50 w-full border-t-[1px] border-indigo-200">
-                        <Link onClick={() => setPreviewCart(-500)} to="/carrito" className="flex justify-center items-center p-3">
+                        <Link onClick={() => setPreviewCart(false)} to="/carrito" className="flex justify-center items-center p-3">
                             <button className="text-indigo-900 font-bold hover:underline">Ver carrito</button>
                         </Link>
                     </div>

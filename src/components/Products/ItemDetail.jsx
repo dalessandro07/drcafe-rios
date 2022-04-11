@@ -56,7 +56,7 @@ const ItemDetail = ({ producto }) => {
             <div className="container px-5 pt-20 mx-auto">
                 <div className="lg:justify-start lg:items-center mx-auto flex flex-col flex-wrap lg:shadow-lg">
                     {producto.color ? (
-                        <div className={'w-full h-2/5 left-0 z-0 ' + bgColor[producto.color]}>
+                        <div className={'w-full h-2/5 left-0 z-0 relative ' + bgColor[producto.color]}>
                             <motion.img
                                 animate={{
                                     x: [-100, 0],
@@ -70,9 +70,10 @@ const ItemDetail = ({ producto }) => {
                                 className="relative py-2 object-cover object-center rounded-lg md:ml-8 lg:ml-28"
                                 src={producto.img}
                             />
+                            {producto.stock === 0 && <span className="text-red-600 text-3xl lg:text-5xl font-semibold opacity-80  absolute z-50 top-[10%] bg-red-100 p-2">AGOTADO</span>}
                         </div>
                     ) : (
-                        <div className={'w-full h-2/5 left-0 z-0 md:flex md:justify-start lg:w-4/5 lg:pl-10'}>
+                        <div className={'w-full h-2/5 left-0 z-0 relative md:flex md:justify-start lg:w-4/5 lg:pl-10'}>
                             <motion.img
                                 animate={{
                                     x: [-100, 0],
@@ -86,6 +87,7 @@ const ItemDetail = ({ producto }) => {
                                 className="relative md:w-4/5 py-2 object-cover object-center md:pl-10 lg:pl-0 lg:w-3/5 rounded-lg"
                                 src={producto.img}
                             />
+                            {producto.stock === 0 && <span className="text-red-600 text-3xl lg:text-5xl font-semibold opacity-80  absolute z-50 top-[10%] bg-red-100 p-2">AGOTADO</span>}
                         </div>
                     )}
 
@@ -120,7 +122,7 @@ const ItemDetail = ({ producto }) => {
                                     Precio Unitario: <span className="title-font font-medium my-4 text-2xl text-gray-900 ml-4">S/ {producto.precio}</span>
                                 </b>
 
-                                <ItemCount stock={producto.stock} initial={1} onAdd={onAdd} />
+                                <ItemCount stock={producto.stock} initial={producto.stock === 0 ? 0 : 1} onAdd={onAdd} />
                             </div>
                         </div>
                     </motion.div>

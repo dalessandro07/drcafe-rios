@@ -58,8 +58,8 @@ const ItemCount = ({ stock, initial, onAdd }) => {
                         }, 1000);
                         actualizarEstado();
                     }}
-                    className="sm:flex rounded-lg ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:opacity-80 mt-8 sm:mt-0">
-                    {agregado ? 'Agregado ✅' : 'Agregar al carrito'}
+                    className={`${stock === 0 ? 'text-red-500 bg-red-100' : 'text-white bg-red-500'} sm:flex rounded-lg ml-auto  border-0 py-2 px-6 focus:outline-none hover:opacity-80 mt-8 sm:mt-0`}>
+                    {stock === 0 ? 'Agotado' : agregado ? 'Agregado ✅' : 'Agregar al carrito'}
                 </button>
             </div>
             <p className={`${stock === 0 ? 'block' : 'hidden'} text-red-500 bg-red-100 rounded p-2 mt-4`}>{'¡No hay stock!'}</p>

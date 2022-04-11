@@ -26,8 +26,8 @@ const NavBar = () => {
             <Disclosure as="nav" className="w-full my-4">
                 {({ open }) => (
                     <>
-                        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-                            <div className="relative flex items-center justify-between h-16">
+                        <div className="max-w-7xl mx-auto xl:w-full px-2 sm:px-6 lg:px-8">
+                            <div className="relative w-full flex items-center justify-between h-16">
                                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                                     <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:bg-red-300 focus:outline-none">
                                         <span className="sr-only">Abrir menu</span>

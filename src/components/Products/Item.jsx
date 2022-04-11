@@ -35,8 +35,8 @@ const Item = ({ producto }) => {
                     ease: 'easeInOut',
                 },
             }}
-            className="flex flex-col max-w-sm bg-white m-4 grow rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-            <Link className={`flex justify-center overflow-hidden h-full ${bgColor[producto.color]}`} to={`/productos/${producto.categoria}/${producto.id}`}>
+            className="flex flex-col max-w-sm bg-white m-4 grow rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 ">
+            <Link className={`flex justify-center overflow-hidden h-full relative ${bgColor[producto.color]}`} to={`/productos/${producto.categoria}/${producto.id}`}>
                 <motion.img
                     whileHover={{
                         scale: 1.2,
@@ -49,6 +49,8 @@ const Item = ({ producto }) => {
                     src={producto.img}
                     alt="producto"
                 />
+
+                {producto.stock === 0 && <span className="text-red-600 text-3xl font-semibold opacity-80 rotate-45 absolute z-50 top-[35%] bg-red-100 p-2">AGOTADO</span>}
             </Link>
 
             <div className="flex flex-col px-5 py-5 pb-5 justify-center h-full">

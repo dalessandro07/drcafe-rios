@@ -33,7 +33,11 @@ const ItemListContainer = () => {
 
     return (
         <>
-            {categoria ? <h2 className="text-3xl font-bold [color:#4a3933] underline p-8">{categoria === 'cafes' ? 'Bolsas de Café' : 'Barras de Chocolate'}</h2> : <h2 className="text-3xl font-bold [color:#4a3933] underline p-8">Productos</h2>}
+            {categoria ? (
+                <h2 className="text-3xl text-center font-bold [color:#4a3933] underline p-8">{categoria === 'cafes' ? 'Bolsas de Café' : 'Barras de Chocolate'}</h2>
+            ) : (
+                <h2 className="text-3xl text-center font-bold [color:#4a3933] underline p-8">Productos</h2>
+            )}
             {!loading ? (
                 categoria ? (
                     <ItemList data={categoria === 'cafes' ? cafes : chocolates} />

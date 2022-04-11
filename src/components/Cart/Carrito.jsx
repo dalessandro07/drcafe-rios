@@ -42,6 +42,15 @@ const Carrito = () => {
                                             <div className="flex items-center justify-between xs:justify-start">
                                                 <button
                                                     onClick={() => {
+                                                        decreaseQuantity(producto, 1);
+                                                    }}
+                                                    className="bg-red-300 rounded-full p-2 m-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
+                                                    </svg>
+                                                </button>
+                                                <button
+                                                    onClick={() => {
                                                         if (cantidad >= 1) {
                                                             increaseQuantity(producto, 1);
                                                         }
@@ -49,15 +58,6 @@ const Carrito = () => {
                                                     className="bg-indigo-300 rounded-full p-2 my-2 mr-2">
                                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                                                    </svg>
-                                                </button>
-                                                <button
-                                                    onClick={() => {
-                                                        decreaseQuantity(producto, 1);
-                                                    }}
-                                                    className="bg-red-300 rounded-full p-2 m-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
                                                     </svg>
                                                 </button>
                                             </div>
