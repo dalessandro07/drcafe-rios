@@ -1,70 +1,114 @@
-# Getting Started with Create React App
+<div align="center">
+  <img src="https://www.greatplacetowork.com.ar/images/coderhouse-logo.png" alt="logo" width="400" />
+  <h1>E-Commerce - Proyecto final</h1>
+  <p>
+    ☕E-Commerce realizado durante el curso de React JS.🍫
+   </p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- Badges -->
+<p>
+  <a href="https://github.com/dalessandro07/drcafe-rios/commits">
+    <img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/y/dalessandro07/drcafe-rios?style=flat-square">
+  </a>
+  <a href="https://github.com/dalessandro07/drcafe-rios/commits">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/dalessandro07/drcafe-rios?style=flat-square" /> 
+  </a>
+  </a>
+  <a href="https://drcafe.netlify.app">
+    <img src="https://api.netlify.com/api/v1/badges/70a4a8d1-92ea-4e73-826f-6cd49ce43415/deploy-status" alt="netlify deploy status success" />
+  </a>
+</p>
+<h4>
+    <a href="https://drcafe.netlify.app">Ver Demo</a>
+  </h4>
+</div>
 
-## Available Scripts
+<br />
 
-In the project directory, you can run:
+<!-- Table of Contents -->
 
-### `npm start`
+# :notebook_with_decorative_cover: Tabla de Contenidos
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [:notebook_with_decorative_cover: Tabla de Contenidos](#notebook_with_decorative_cover-tabla-de-contenidos)
+  - [:star2: Acerca del proyecto](#star2-acerca-del-proyecto)
+    - [:camera: Gif de presentación](#camera-gif-de-presentación)
+  - [:space_invader: Tecnologías usadas](#space_invader-tecnologías-usadas)
+  - [Comenzando con el proyecto.](#comenzando-con-el-proyecto)
+    - [Prerequisitos](#prerequisitos)
+    - [:running: Correr el proyecto localmente](#running-correr-el-proyecto-localmente)
+            <!-- About the Project -->
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## :star2: Acerca del proyecto
 
-### `npm test`
+<!-- Screenshots -->
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### :camera: Gif de presentación
 
-### `npm run build`
+<div align="center"> 
+    <a href="https://drcafe.netlify.app/">
+    <img src="./DRCAFE-APP.gif" alt="Demo" />
+    </a>
+</div>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<!-- TechStack -->
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## :space_invader: Tecnologías usadas
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-   [React.js](https://reactjs.org/)
+    -   React en su versión 18 es el framework de Javascript en el que está contruida esta aplicación, ya que además de ser la tecnología que aprendí en el curso, es la que personalmente, más me llama la atención.
+-   [React Router v6](https://reactrouter.com/)
+    -   React por sí mismo no tiene un sistema de navegación por defecto, por lo que elegí React Router en su versión 6. El hecho de ser la librería más usada para navegación, me da la ventaja de poder contar con una gran documentación para facilitar el desarrollo.
+-   [Create React App](https://create-react-app.dev/)
+    -   Este proyecto se construyó usando Create React App.
+-   [Firebase](https://firebase.google.com/)
+    -   Firebase es una herramienta que provee Google, me permitió crear una base de datos lo suficientemente completa para alojar productos y ordenes.
+-   [Netlify](https://www.netlify.com/)
+    -   Netlify es una herramienta de hosting que me permitió hacer un deploy de mi proyecto de forma gratuita y sencilla.
+-   [Tailwind CSS](https://tailwindcss.com/), [Headless UI / React](https://headlessui.dev/) y [Hero Icons / React](https://heroicons.com/)
+    -   Tailwind CSS es un framework de estilos que me permitió hacer una interfaz detallada y prolija de forma rápida y sencilla, permitiéndome una maquetación óptima y estilos minimalistas en poco tiempo.
+    -   Headless UI, me brindó componentes de interfaz de usuario totalmente accesibles, diseñados para integrarse perfectamente con el CSS de Tailwind.
+    -   HeroIcons, me ofreció preciosos iconos SVG hechos a mano. Esta librería también está hecha por los creadores de Tailwind CSS.
+-   [Framer-motion](https://www.framer.com/motion/)
+    -   Framer motion es una potente biblioteca de animaciones lista para la producción de React. Además es de código abierto. Me permitió hacer animaciones complejas de en poco tiempo.
 
-### `npm run eject`
+<!-- Getting Started -->
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Comenzando con el proyecto.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!-- Prerequisites -->
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Prerequisitos
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Este proyecto usa npm para la instalación de dependencias, por lo que si no tienes instalado el paquete npm, debes instalarlo antes de continuar.
 
-## Learn More
+```bash
+ npm install -g npm
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<!-- Run Locally -->
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### :running: Correr el proyecto localmente
 
-### Code Splitting
+Clonar el proyecto:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+  git clone https://github.com/dalessandro07/drcafe-rios.git
+```
 
-### Analyzing the Bundle Size
+Ir al directorio del proyuecto:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+  cd drcafe-rios
+```
 
-### Making a Progressive Web App
+Instalar las dependencias:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+  npm install
+```
 
-### Advanced Configuration
+Correr el servidor:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+  npm start
+```
