@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://www.greatplacetowork.com.ar/images/coderhouse-logo.png" alt="logo" width="400" />
+  <img src="https://drcafe.netlify.app/assets/images/logo-1-bg.png" alt="logo" width="400" />
   <h1>E-Commerce - Proyecto final</h1>
   <p>
     ☕E-Commerce realizado durante el curso de React JS.🍫
