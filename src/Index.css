@@ -5,36 +5,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 #root {
-    background-color: #f6f2ee;
-    overflow-x: hidden;
+	background-color: #f6f2ee;
+	overflow-x: hidden;
 }
 
 .index-page {
-    background-image: url('/public/assets/images/main-background.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+	background-image: url('/public/assets/images/main-background.webp');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    overflow-x: hidden;
+	font-family: 'Poppins', sans-serif;
+	overflow-x: hidden;
 }
 
 body::-webkit-scrollbar {
-    -webkit-appearance: none;
+	-webkit-appearance: none;
 }
 
 body::-webkit-scrollbar:vertical {
-    width: 13px;
+	width: 13px;
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: #4a3933;
-    border-radius: 20px;
-    border: 2px solid #f1f2f3;
+	background-color: #4a3933;
+	border-radius: 20px;
+	border: 2px solid #f1f2f3;
 }
 
 body::-webkit-scrollbar-track {
-    border-radius: 10px;
+	border-radius: 10px;
 }
